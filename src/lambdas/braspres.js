@@ -8,15 +8,16 @@ const bodyBrasPres = require('../utils/bodyBrasPres');
 const axiosConfigBrasPres = require('../utils/axiosConfigBrasPres')
 require('dotenv').config()
 
+
 const braspres = async event => {
 
     try {
 
-        const returnType = 'json'
-        const frete = await axios.post(`https://hml-api.braspress.com/v1/cotacao/calcular/${returnType}`,
-        bodyBrasPres, axiosConfigBrasPres)
-         
-         console.log('keys', frete.data)
+        const paramns = bodyBrasPres
+        const url = Object.values(paramns)
+        console.log(url)
+        const frete = await axios.post(`http://www.braspress.com.br/cotacaoXml?param=${url}`)
+         console.log(frete)
          
          return {
 			statusCode: 200,
@@ -25,8 +26,8 @@ const braspres = async event => {
 		}
 
     } catch (error) {
-
-        console.log(error)
+		console.log(error)
+		throw createError(500, error)
     }
 }
 
