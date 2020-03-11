@@ -7,7 +7,7 @@ module.exports = ({
     CNPJREM: "28026371000161",
     CNPJDES: "28026371000161",
     TIPOFRETE: "2",
-    PESO: "50.55",
+    PESO: "30",
     VALORNF: "187.9",
     VOLUME: "1",
     MODAL: "R"

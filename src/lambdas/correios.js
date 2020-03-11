@@ -7,17 +7,19 @@ const axios = require('axios');
 const bodyCorreios = require('../utils/bodyCorreios');
 const axiosConfigCorreios = require('../utils/axiosConfigCorreios')
 const AxiosPlugin = require('vue-axios-cors')
+const convert = require('xml-js')
 require('dotenv').config()
 
 
 
 const correios = async event => {
 	try {
-		const frete = await axios.post(`http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx/CalcPrecoPrazo`, bodyCorreios, axiosConfigCorreios)
-		
+		const frete = await axios.post(`http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx/CalcPrecoPrazo`, 
+		bodyCorreios, axiosConfigCorreios)
+		const formatado = await convert.xml2js(frete.data, {compact: true, spaces: 4})
 		return {
 			statusCode: 200,
-			body: JSON.stringify(frete.data),
+			body: JSON.stringify(formatado),
 
 		}
 	} catch (error) {
