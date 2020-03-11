@@ -6,6 +6,7 @@ const createError = require('http-errors')
 const axios = require('axios');
 const bodyBrasPres = require('../utils/bodyBrasPres');
 const axiosConfigBrasPres = require('../utils/axiosConfigBrasPres')
+const convert = require('xml-js')
 require('dotenv').config()
 
 
@@ -17,11 +18,11 @@ const braspres = async event => {
         const url = Object.values(paramns)
         console.log(url)
         const frete = await axios.post(`http://www.braspress.com.br/cotacaoXml?param=${url}`)
-         console.log(frete)
+        const formatado = await convert.xml2js(frete.data, {compact: true, spaces: 4})
          
          return {
 			statusCode: 200,
-			body: JSON.stringify(frete.data)
+			body: JSON.stringify(formatado)
 
 		}
 
