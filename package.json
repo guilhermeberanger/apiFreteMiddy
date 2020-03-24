@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@middy/core": "^1.0.0-beta.7",
+    "@middy/http-cors": "^1.0.0-beta.8",
     "@middy/http-error-handler": "^1.0.0-beta.7",
     "@middy/http-json-body-parser": "^1.0.0-beta.7",
     "@middy/http-urlencode-body-parser": "^1.0.0-beta.7",
