@@ -57,7 +57,7 @@ const handler = middy(braspres)
   .use(httpJsonBodyParser())
   .use(httpUrlencodeBodyParser())
   .use(httpErrorHandler())
-  .use(cors({ headers: 'origins, x-requested-with, content-type, accept, application/json, *' }))
+  .use(cors({ headers: 'origins, x-requested-with, content-type, accept, application/json, Access-Control-Allow-Origin, *' }))
 
 
 
