@@ -13,18 +13,18 @@ const braspres = async event => {
   try {
 
     if (
-      event.httpMethod === 'OPTIONS' 
-     ){
-         return {
-           statusCode: 200,
-          headers: {
-            'access-control-allow-origin': '*',
-           'Access-Control-Allow-Headers' : '*'
-           },
-           body: 'ok'
-        }
-     }
-   
+      event.httpMethod === 'OPTIONS'
+    ){
+      return {
+        statusCode: 200,
+        headers: {
+          'access-control-allow-origin': '*',
+          'Access-Control-Allow-Headers' : '*'
+        },
+        body: 'ok'
+      }
+    }
+
 
     const cep1 = event.body.cepOrigem;
     const cep2 = event.body.cepDestino;
@@ -51,7 +51,7 @@ const braspres = async event => {
     console.log(url)
     const frete = await axios.post(`http://www.braspress.com.br/cotacaoXml?param=${url}`)
     //console.log(frete)
-    
+
     return {
       statusCode: 200,
       headers: {
@@ -72,7 +72,7 @@ const handler = middy(braspres)
   .use(httpJsonBodyParser())
   .use(httpUrlencodeBodyParser())
   .use(httpErrorHandler())
-  //.use(cors({ headers: 'origins, x-requested-with, content-type, accept, application/json, Access-Control-Allow-Origin: *' }))
+//.use(cors({ headers: 'origins, x-requested-with, content-type, accept, application/json, Access-Control-Allow-Origin: *' }))
 
 
 
