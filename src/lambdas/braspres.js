@@ -36,14 +36,14 @@ const braspres = async event => {
     const paramns = bodyBras
     const url = Object.values(paramns)
     console.log(url)
-    const frete = await axios.post(`http://www.braspress.com.br/cotacaoXml?param=${url}`)
+    //const frete = await axios.post(`http://www.braspress.com.br/cotacaoXml?param=${url}`)
     //console.log(frete)
     //const formatado = await convert.xml2js(frete.data, { compact: true, spaces: 4 })
 
     return {
       statusCode: 200,
 
-      body: JSON.stringify(frete.data)
+     // body: JSON.stringify(frete.data)
 
     }
 
@@ -57,7 +57,7 @@ const handler = middy(braspres)
   .use(httpJsonBodyParser())
   .use(httpUrlencodeBodyParser())
   .use(httpErrorHandler())
-  .use(cors({ headers: 'origins, x-requested-with, content-type' }))
+  .use(cors({ headers: 'origins, x-requested-with, content-type, accept, application/json' }))
 
 
 
