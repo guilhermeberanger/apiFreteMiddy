@@ -26,28 +26,27 @@ const braspres = async event => {
     }
 
 
-    const cep1 = event.body.cepOrigem;
-    const cep2 = event.body.cepDestino;
-    const peso = event.body.peso;
-    const valorNF = event.body.valorDeclarado;
+    const dadoshtml = JSON.parse(event.body);
+    //const cep2 = event.body.cepDestino;
+   // const peso = event.body.peso;
+    //const valorNF = event.body.valorDeclarado;
 
     const bodyBras = {
       CNPJ: "28026371000161",
       EMPORIGEM: "2",
-      CEPORIGEM: cep1,
-      CEPDESTINO: cep2,
+      CEPORIGEM: dadoshtml.cepOrigem,
+      CEPDESTINO: dadoshtml.cepDestino,
       CNPJREM: "28026371000161",
       CNPJDES: "28026371000161",
       TIPOFRETE: "2",
-      PESO: peso,
-      VALORNF: valorNF,
+      PESO: dadoshtml.peso,
+      VALORNF: dadoshtml.valorDeclarado,
       VOLUME: "1",
       MODAL: "R"
     }
+    
 
-
-    const paramns = bodyBras
-    const url = Object.values(paramns)
+    const url = Object.values(bodyBras)
     console.log(url)
     const frete = await axios.post(`http://www.braspress.com.br/cotacaoXml?param=${url}`)
     //console.log(frete)
