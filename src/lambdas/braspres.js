@@ -19,7 +19,8 @@ const braspres = async event => {
         statusCode: 200,
         headers: {
           'access-control-allow-origin': '*',
-          'Access-Control-Allow-Headers' : '*'
+          'Access-Control-Allow-Headers' : '*',
+          'Content-Type': 'application/json'
         },
         body: 'ok'
       }
@@ -55,7 +56,8 @@ const braspres = async event => {
       statusCode: 200,
       headers: {
         'access-control-allow-origin': '*',
-        'Access-Control-Allow-Headers' : '*'
+        'Access-Control-Allow-Headers' : '*',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(frete.data)
 
