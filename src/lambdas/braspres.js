@@ -6,6 +6,7 @@ const createError = require('http-errors')//midd
 const axios = require('axios');
 //const bodyBrasPres = require('../utils/bodyBrasPres');
 //const cors = require('@middy/http-cors')
+const convert = require('xml-js')
 require('dotenv').config()
 
 
@@ -14,12 +15,12 @@ const braspres = async event => {
 
     if (
       event.httpMethod === 'OPTIONS'
-    ){
+    ) {
       return {
         statusCode: 200,
         headers: {
           'access-control-allow-origin': '*',
-          'Access-Control-Allow-Headers' : '*',
+          'Access-Control-Allow-Headers': '*',
           'Content-Type': 'application/json'
         },
         body: 'ok'
@@ -28,10 +29,6 @@ const braspres = async event => {
 
 
     const dadoshtml = JSON.parse(event.body);
-    //const cep2 = event.body.cepDestino;
-   // const peso = event.body.peso;
-    //const valorNF = event.body.valorDeclarado;
-
     const bodyBras = {
       CNPJ: "28026371000161",
       EMPORIGEM: "2",
@@ -45,21 +42,22 @@ const braspres = async event => {
       VOLUME: "1",
       MODAL: "R"
     }
-    
+
 
     const url = Object.values(bodyBras)
-    console.log(url)
+    //console.log(url)
     const frete = await axios.post(`http://www.braspress.com.br/cotacaoXml?param=${url}`)
-    //console.log(frete)
+    const braspres = convert.xml2json(frete.data, { compact: true, spaces: 4 });
+    module.exports = {braspres}
 
     return {
       statusCode: 200,
       headers: {
         'access-control-allow-origin': '*',
-        'Access-Control-Allow-Headers' : '*',
+        'Access-Control-Allow-Headers': '*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(frete.data)
+      body: braspres
 
     }
 
