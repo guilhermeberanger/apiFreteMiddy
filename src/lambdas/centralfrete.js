@@ -26,7 +26,7 @@ const api = async event => {
 		}
 		const dadosHtml = JSON.parse(event.body)
 		const bodyCentral = {
-			from: dadosHtml.cepOrigem,
+			from: '01123010',
 			to: dadosHtml.cepDestino,
 			cargo_types: "[13, 37]",
 			invoice_amount: dadosHtml.valorDeclarado,
@@ -34,6 +34,7 @@ const api = async event => {
 		}
 		const data = await axios.post(`https://sandbox.centraldofrete.com/v1/quotation`, bodyCentral, axiosConfig)
 		const centralDoFrete = await axios.get(`https://sandbox.centraldofrete.com/v1/quotation/${data.data.code}`, axiosConfig)
+		
 		
 		
 		return {

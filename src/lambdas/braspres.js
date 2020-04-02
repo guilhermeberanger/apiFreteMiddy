@@ -32,7 +32,7 @@ const braspres = async event => {
     const bodyBras = {
       CNPJ: "28026371000161",
       EMPORIGEM: "2",
-      CEPORIGEM: dadoshtml.cepOrigem,
+      CEPORIGEM: '01123010',
       CEPDESTINO: dadoshtml.cepDestino,
       CNPJREM: "28026371000161",
       CNPJDES: "28026371000161",

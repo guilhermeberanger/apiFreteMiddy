@@ -34,7 +34,7 @@ const correios = async event => {
 			nCdEmpresa: " ",
 			sDsSenha: " ",
 			nCdServico: "04014",
-			sCepOrigem: dadosHtml.cepOrigem,
+			sCepOrigem: '01123010',
 			sCepDestino: dadosHtml.cepDestino,
 			nVlPeso: dadosHtml.peso,
 			nCdFormato: "3",
