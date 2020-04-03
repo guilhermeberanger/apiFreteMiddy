@@ -38,7 +38,7 @@ const correios = async event => {
 			sCepDestino: dadosHtml.cepDestino,
 			nVlPeso: dadosHtml.peso,
 			nCdFormato: "3",
-			nVlComprimento: "1.1",
+			nVlComprimento: dadosHtml.comprimento,
 			nVlAltura: dadosHtml.altura,
 			nVlLargura: dadosHtml.largura,
 			nVlDiametro: "2",

@@ -39,7 +39,7 @@ const braspres = async event => {
       TIPOFRETE: "2",
       PESO: dadoshtml.peso,
       VALORNF: dadoshtml.valorDeclarado,
-      VOLUME: "1",
+      VOLUME: dadoshtml.quantidade,
       MODAL: "R"
     }
 
