@@ -9,20 +9,20 @@ module.exports = ({
       valor: 10
     }],
     Origem: {
-      logradouro: "R. Lubavitch",
-      numero: "71",
+      logradouro: "",
+      numero: "7",
       complemento: "",
-      bairro: "bom retiro",
+      bairro: "",
       referencia: "",
       cep: "01123010"
     },
     Destino: {
-      logradouro: "BR-356",
-      numero: "3049",
+      logradouro: "",
+      numero: "",
       complemento: "",
-      bairro: "Belvedere",
+      bairro: "",
       referencia: "",
-      cep: "30320900"
+      cep: "59950971"
     },
     Token: goFrete
   })
