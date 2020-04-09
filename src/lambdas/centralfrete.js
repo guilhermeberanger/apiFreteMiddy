@@ -32,8 +32,8 @@ const api = async event => {
 			invoice_amount: dadosHtml.valorDeclarado,
 			volumes: `[{\"quantity\": ${dadosHtml.quantidade}, \"width\": ${dadosHtml.largura}, \"height\": ${dadosHtml.altura}, \"length\": ${dadosHtml.comprimento}, \"weight\": ${dadosHtml.peso} }]`
 		}
-		const data = await axios.post(`https://sandbox.centraldofrete.com/v1/quotation`, bodyCentral, axiosConfig)
-		const centralDoFrete = await axios.get(`https://sandbox.centraldofrete.com/v1/quotation/${data.data.code}`, axiosConfig)
+		const data = await axios.post(`https://api.centraldofrete.com/v1/quotation`, bodyCentral, axiosConfig)
+		const centralDoFrete = await axios.get(`https://api.centraldofrete.com/v1/quotation/${data.data.code}`, axiosConfig)
 		
 		
 		
